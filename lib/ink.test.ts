@@ -22,11 +22,18 @@ test("characters fill left to right", () => {
   assert.ok(fresh.every((ink) => ink === 0));
 });
 
-test("upper lines are further along than lower lines", () => {
+test("a line finishes before the next line starts, so the edge stays horizontal", () => {
   const vh = 800;
-  assert.ok(lineProgress(100, vh) > lineProgress(500, vh));
-  assert.equal(lineProgress(0, vh), 1);
-  assert.equal(lineProgress(vh, vh), 0);
+  const step = 48;
+  assert.equal(lineProgress(448, vh, step), 0);
+  assert.equal(lineProgress(400, vh, step), 1);
+  assert.equal(lineProgress(352, vh, step), 1);
+  assert.equal(lineProgress(496, vh, step), 0);
+
+  const mid = lineProgress(424, vh, step);
+  assert.ok(mid > 0 && mid < 1);
+  assert.equal(lineProgress(424 + step, vh, step), 0);
+  assert.equal(lineProgress(424 - step, vh, step), 1);
 });
 
 test("lines group by vertical position, then read left to right", () => {
@@ -44,9 +51,9 @@ test("lines group by vertical position, then read left to right", () => {
   );
 });
 
-test("cards open late and stay open until the word falls back into the dim band", () => {
-  assert.equal(nextOpen(false, 0.5), false);
-  assert.equal(nextOpen(false, 0.8), true);
+test("cards open as the word is reached and stay open until it falls back into the dim band", () => {
+  assert.equal(nextOpen(false, 0.2), false);
+  assert.equal(nextOpen(false, 0.4), true);
   assert.equal(nextOpen(true, 0.2), true);
   assert.equal(nextOpen(true, 0.02), false);
 });

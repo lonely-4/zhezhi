@@ -2,7 +2,7 @@ export const DIM = [62, 58, 52] as const;
 export const LIT = [243, 238, 230] as const;
 export const NIB = [255, 252, 246] as const;
 
-export const OPEN_AT = 0.72;
+export const OPEN_AT = 0.34;
 export const CLOSE_AT = 0.08;
 
 export function clamp01(value: number) {
@@ -11,12 +11,19 @@ export function clamp01(value: number) {
   return value;
 }
 
-/** How far a line has been read. 0 when it enters the lower band, 1 as it reaches the upper band. */
-export function lineProgress(lineY: number, viewportHeight: number) {
-  const zoneStart = viewportHeight * 0.8;
-  const zoneEnd = viewportHeight * 0.36;
-  const span = zoneStart - zoneEnd;
-  if (span <= 0) return 1;
+/**
+ * How far one line has been read.
+ * The wet edge is a single line tall, so the line above is already finished
+ * and the line below has not started. That keeps the fill horizontal.
+ */
+export function lineProgress(
+  lineY: number,
+  viewportHeight: number,
+  lineHeight = 32,
+) {
+  const span = Math.max(lineHeight, 1);
+  const focus = viewportHeight * 0.5;
+  const zoneStart = focus + span;
   return clamp01((zoneStart - lineY) / span);
 }
 

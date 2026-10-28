@@ -54,32 +54,30 @@ function FeatureCard({ feature }: { feature: Feature }) {
       data-open="false"
       aria-expanded="false"
     >
-      <span className="feature-top">
+      <span className="pill">
         <span className="icon-slot">
           <FeatureIcon name={feature.icon} />
         </span>
         <Glyphs
           className="feature-title"
-          text={`${feature.title}${feature.suffix}`}
+          text={feature.title}
           featureId={feature.id}
         />
-      </span>
-      <span className="feature-more">
-        <span className="feature-more-inner">
-          <span className="kicker">{feature.kicker}</span>
+        <span className="pill-extra">
           <span className="feature-body">{feature.body}</span>
           {feature.people ? (
-            <ul className="people">
+            <span className="people">
               {feature.people.map((person) => (
-                <li key={person.name}>
+                <span className="person" key={person.name}>
                   <span className="person-name">{person.name}</span>
                   <span className="person-role">{person.role}</span>
-                </li>
+                </span>
               ))}
-            </ul>
+            </span>
           ) : null}
         </span>
       </span>
+      {feature.suffix ? <Glyphs text={feature.suffix} /> : null}
     </span>
   );
 }
@@ -145,15 +143,16 @@ export function InkEssay() {
           feature: el.dataset.feature,
         };
       });
-      const tolerance = Math.max(
-        8,
-        (measured.find((item) => item.h > 0)?.h ?? 24) * 0.45,
-      );
+      const glyphHeight = measured.find((item) => item.h > 0)?.h ?? 24;
+      const tolerance = Math.max(8, glyphHeight * 0.45);
       const lines = groupLines(measured, tolerance);
+      const essay = root.querySelector(".essay");
+      const measuredStep = essay ? parseFloat(getComputedStyle(essay).lineHeight) : NaN;
+      const lineStep = Number.isFinite(measuredStep) ? measuredStep : glyphHeight * 1.78;
       const totals = new Map<string, { sum: number; count: number }>();
 
       for (const line of lines) {
-        const progress = lineProgress(line[0].y, viewportHeight);
+        const progress = lineProgress(line[0].y, viewportHeight, lineStep);
         line.forEach((item, index) => {
           const ink = charInk(progress, index, line.length);
           applyInk(item.el, ink);
@@ -237,7 +236,7 @@ export function InkEssay() {
       <main className="sheet">
         <article className="essay">
           <p className="sr-only">
-            向下滚动时，正文会从左到右、从上到下逐渐显现。读到特点时，这个词会展开成一张卡片。
+            向下滚动时，正文一行一行从左到右亮起来。读到特点时，这个词浮成句子里的一枚卡片。
           </p>
           {paragraphs.map((pieces, index) => (
             <div className="stanza" key={index}>
