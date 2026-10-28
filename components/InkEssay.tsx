@@ -56,14 +56,12 @@ function FeatureCard({ feature }: { feature: Feature }) {
       aria-expanded="false"
     >
       <span className="pill">
-        <span className="icon-slot">
-          <FeatureIcon name={feature.icon} />
+        <span className="feature-title">
+          <span className="icon-slot">
+            <FeatureIcon name={feature.icon} />
+          </span>
+          <Glyphs text={feature.title} featureId={feature.id} />
         </span>
-        <Glyphs
-          className="feature-title"
-          text={feature.title}
-          featureId={feature.id}
-        />
         <span className="pill-extra">
           <span className="feature-body">{feature.body}</span>
           {feature.people ? (
