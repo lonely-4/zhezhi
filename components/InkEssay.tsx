@@ -12,6 +12,7 @@ import {
   charInk,
   DIM_COLOR,
   groupLines,
+  holdInk,
   lineProgress,
   LIT_COLOR,
   nextOpen,
@@ -105,6 +106,7 @@ export function InkEssay() {
     if (!root) return;
 
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const read = new WeakMap<HTMLElement, number>();
     let followUntil = 0;
     let frame = 0;
 
@@ -154,7 +156,8 @@ export function InkEssay() {
       for (const line of lines) {
         const progress = lineProgress(line[0].y, viewportHeight, lineStep);
         line.forEach((item, index) => {
-          const ink = charInk(progress, index, line.length);
+          const ink = holdInk(read.get(item.el) ?? 0, charInk(progress, index, line.length));
+          read.set(item.el, ink);
           applyInk(item.el, ink);
           if (!item.feature) return;
           const bucket = totals.get(item.feature) ?? { sum: 0, count: 0 };

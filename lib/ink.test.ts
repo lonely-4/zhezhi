@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { charInk, groupLines, lineProgress, nextOpen } from "./ink.ts";
+import { charInk, groupLines, holdInk, lineProgress, nextOpen } from "./ink.ts";
 
 test("characters fill left to right", () => {
   const count = 8;
@@ -49,6 +49,13 @@ test("lines group by vertical position, then read left to right", () => {
     lines.map((line) => line.map((item) => item.id)),
     [["a", "b"], ["c"]],
   );
+});
+
+test("ink that has already been read does not recede", () => {
+  assert.equal(holdInk(0.8, 0.2), 0.8);
+  assert.equal(holdInk(0.2, 0.8), 0.8);
+  assert.equal(holdInk(0, 0), 0);
+  assert.equal(holdInk(1, 0.4), 1);
 });
 
 test("cards open as the word is reached and stay open until it falls back into the dim band", () => {

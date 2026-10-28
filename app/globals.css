@@ -124,14 +124,25 @@ body {
 
 .feature[data-open="true"] .pill {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.22em;
-  margin: 0 0.04em;
-  padding: 0.02em 0.46em 0.04em 0.08em;
-  border-radius: 999px;
-  background: #e7eef8;
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.32);
-  vertical-align: baseline;
+  justify-content: center;
+  gap: 0.12em;
+  width: 2.55em;
+  height: 2.55em;
+  margin: 0 0.14em;
+  padding: 0.22em;
+  border: 1px solid rgba(255, 248, 236, 0.22);
+  border-radius: 0.34em;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 46%),
+    linear-gradient(180deg, #4a453e 0%, #2a261f 58%, #1a1713 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 248, 236, 0.38),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.35),
+    0 1px 0 #070605,
+    0 7px 12px rgba(0, 0, 0, 0.42);
+  vertical-align: middle;
   animation: float-up 0.7s var(--ease) both;
 }
 
@@ -140,11 +151,17 @@ body {
   white-space: nowrap;
 }
 
+.feature[data-open="true"] .feature-title {
+  font-size: 0.58em;
+  line-height: 1;
+}
+
 .feature[data-open="true"] .feature-title .glyph {
-  color: #14181f !important;
+  color: #f7f2ea !important;
   background: none !important;
   background-image: none !important;
-  -webkit-text-fill-color: #14181f !important;
+  -webkit-text-fill-color: #f7f2ea !important;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
 }
 
 .feature:not([data-open="true"]) .icon-slot {
@@ -158,14 +175,18 @@ body {
   justify-content: center;
   width: 1.15em;
   height: 1.15em;
-  border-radius: 50%;
-  background: #2f6bff;
-  color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.45);
+  border-radius: 0.22em;
+  background: linear-gradient(180deg, #3a342c 0%, #16130f 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 248, 236, 0.2),
+    0 1px 0 rgba(0, 0, 0, 0.4);
+  color: #f3eee6;
 }
 
 .icon-slot svg {
-  width: 0.62em;
-  height: 0.62em;
+  width: 0.72em;
+  height: 0.72em;
 }
 
 .pill-extra {

@@ -84,3 +84,8 @@ export function nextOpen(wasOpen: boolean, ink: number) {
   if (wasOpen) return ink >= CLOSE_AT;
   return ink >= OPEN_AT;
 }
+
+/** Ink only advances. A later, dimmer sample cannot erase what was already read. */
+export function holdInk(previous: number, next: number) {
+  return Math.max(clamp01(previous), clamp01(next));
+}
