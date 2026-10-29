@@ -1,18 +1,18 @@
-# 折纸
+# Zhezhi
 
-一页适合自我介绍、团队介绍、工作室介绍的滚动页面。
+A scrolling page for introducing yourself, a team, or a studio.
 
-正文默认是近乎融进背景的暗灰色。往下滚动时，字按阅读顺序从左到右、从上到下被填亮。读到某个特点，这个词会就地变厚：一张带图标和说明的卡片从下往上浮出来，然后句子继续。卡片长在正文里，而不是标题底下的一排功能格。
+The type starts as a dark gray, nearly lost in the background. As you scroll, it fills one line at a time, left to right. When the reading reaches a feature, that word thickens into a flat card inside the sentence, then the sentence goes on. The card lives in the prose, not in a row under a heading.
 
-现在这页写的是虚构工作室「折纸」。换成你的介绍时，只改 [`content/essay.ts`](content/essay.ts)：
+This page is written for a fictional studio, Zhezhi. To use your own introduction, edit [`content/essay.ts`](content/essay.ts):
 
-- `paragraphs` 是正文，按段落书写
-- 在句子中间插入 `{ type: "feature", id: "..." }`
-- `features` 里写卡片标题、标点、图标、说明，以及可选的人名列表
+- `paragraphs` is the body, one array per paragraph
+- drop `{ type: "feature", id: "..." }` into a sentence
+- `features` holds the card title, punctuation, icon, note, and an optional list of people
 
-图标目前有 `spine`、`talk`、`seal`、`people`，画在 `components/icons.tsx`。
+Icons are `spine`, `talk`, `seal`, and `people`, drawn in `components/icons.tsx`.
 
-## 本地运行
+## Run locally
 
 ```bash
 npm install
@@ -21,10 +21,10 @@ npm run dev
 
 开发服务器在 [http://127.0.0.1:4317](http://127.0.0.1:4317)。
 
-改完中文文案后，字体文件只收录了当前用到的字。重新子集化：
+The font files only include the characters currently in use. After you change the copy, subset them again:
 
 ```bash
 node scripts/subset-fonts.mjs
 ```
 
-页面会尊重系统的「减少动态效果」：此时全文直接可读，卡片保持展开。
+The page respects “reduce motion”: the text is fully readable and the cards stay open.

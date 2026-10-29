@@ -19,7 +19,7 @@ for (const file of files) {
     if (char.trim() && char.charCodeAt(0) > 127) chars.add(char);
   }
 }
-for (const char of "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@.+-_/:'") {
+for (const char of "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@.+-_/:'.,!?;()&") {
   chars.add(char);
 }
 
@@ -40,10 +40,10 @@ async function fetchWeight(family, weight) {
 
 mkdirSync("app/fonts", { recursive: true });
 const jobs = [
-  ["Noto+Serif+SC", "500", "app/fonts/serif-500.woff2"],
-  ["Noto+Serif+SC", "600", "app/fonts/serif-600.woff2"],
-  ["Noto+Sans+SC", "400", "app/fonts/sans-400.woff2"],
-  ["Noto+Sans+SC", "500", "app/fonts/sans-500.woff2"],
+  ["Newsreader", "500", "app/fonts/serif-500.woff2"],
+  ["Newsreader", "600", "app/fonts/serif-600.woff2"],
+  ["Instrument+Sans", "400", "app/fonts/sans-400.woff2"],
+  ["Instrument+Sans", "500", "app/fonts/sans-500.woff2"],
 ];
 
 for (const [family, weight, dest] of jobs) {

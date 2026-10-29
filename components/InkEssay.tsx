@@ -237,7 +237,7 @@ export function InkEssay() {
       <main className="sheet">
         <article className="essay">
           <p className="sr-only">
-            向下滚动时，正文一行一行从左到右亮起来。读到特点时，这个词浮成句子里的一枚卡片。
+            As you scroll, the text fills one line at a time, left to right. When the reading reaches a feature, that word rises into a card inside the sentence.
           </p>
           {paragraphs.map((pieces, index) => (
             <div className="stanza" key={index}>

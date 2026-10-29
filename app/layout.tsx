@@ -23,9 +23,9 @@ const sans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "折纸 — 句子里的介绍",
+  title: "Zhezhi — an introduction inside the sentence",
   description:
-    "适合自我、团队与工作室的介绍页。正文默认隐在背景里，滚动时从左到右填亮，读到特点，卡片从字里浮上来。",
+    "A page for introducing yourself, a team, or a studio. The type starts nearly lost in the background, fills one line at a time as you scroll, and a word thickens into a card when you reach it.",
 };
 
 export const viewport: Viewport = {
@@ -39,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
       <body>{children}</body>
     </html>
   );

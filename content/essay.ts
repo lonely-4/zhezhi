@@ -8,7 +8,7 @@ export type Person = {
 export type Feature = {
   id: string;
   title: string;
-  /** Punctuation that belongs to the sentence, kept inside the word so the card can open around it. */
+  /** Punctuation that belongs to the sentence, kept outside the chip. */
   suffix: string;
   kicker: string;
   icon: FeatureIcon;
@@ -22,49 +22,49 @@ export type LinkPiece = { type: "link"; href: string; text: string };
 export type Piece = TextPiece | FeaturePiece | LinkPiece;
 
 export const ui = {
-  mark: "折纸",
-  use: "自我 · 团队 · 工作室",
-  hint: "向下滚动，字会沿着阅读的方向亮起来",
-  note: "示例介绍。把 content/essay.ts 里的句子和卡片换成你的。",
+  mark: "Zhezhi",
+  use: "Self · Team · Studio",
+  hint: "Scroll. The type fills one line at a time.",
+  note: "A sample. Replace the sentences and cards in content/essay.ts.",
 };
 
 export const features: Record<string, Feature> = {
   spine: {
     id: "spine",
-    title: "页脊",
-    suffix: "。",
-    kicker: "产品",
+    title: "spine",
+    suffix: ".",
+    kicker: "Product",
     icon: "spine",
-    body: "摘录、批注和决定，按时间折在一起，不另做一套知识库。",
+    body: "Excerpts, notes, and decisions, folded along time. Not a second knowledge base.",
   },
   talk: {
     id: "talk",
-    title: "对谈",
-    suffix: "，",
-    kicker: "产品",
+    title: "thread",
+    suffix: ",",
+    kicker: "Product",
     icon: "talk",
-    body: "评论贴着原文生长。主语留在原来的那段话旁边。",
+    body: "Comments grow on the original passage. The subject stays beside the sentence it came from.",
   },
   seal: {
     id: "seal",
-    title: "定稿",
-    suffix: "。",
-    kicker: "产品",
+    title: "seal",
+    suffix: ".",
+    kicker: "Product",
     icon: "seal",
-    body: "发布是一道可回退的折痕。谁、何时、为何，都留在折痕上。",
+    body: "Publishing is a crease you can unfold. Who, when, and why stay on the crease.",
   },
   people: {
     id: "people",
-    title: "四人",
-    suffix: "。",
-    kicker: "工作室",
+    title: "four",
+    suffix: ".",
+    kicker: "Studio",
     icon: "people",
-    body: "设计、文字、工程，再加上一个负责说不的人。",
+    body: "Design, words, engineering, and one person whose job is to say no.",
     people: [
-      { name: "林可", role: "设计" },
-      { name: "周屿", role: "文字" },
-      { name: "陈宁", role: "工程" },
-      { name: "宋迟", role: "负责说不" },
+      { name: "Lin Ke", role: "Design" },
+      { name: "Zhou Yu", role: "Words" },
+      { name: "Chen Ning", role: "Engineering" },
+      { name: "Song Chi", role: "Says no" },
     ],
   },
 };
@@ -73,51 +73,51 @@ export const paragraphs: Piece[][] = [
   [
     {
       type: "text",
-      text: "我们是折纸。四个人，在上海，给那些需要把事情想清楚的人做软件。",
+      text: "We are Zhezhi. Four people in Shanghai, making software for anyone who needs to think a thing through.",
     },
   ],
   [
     {
       type: "text",
-      text: "多数工具默认你正在赶路。我们默认你想把一件事做完。少一句说明，少一次选择，剩下的时间还给工作本身。",
+      text: "Most tools assume you are in a hurry. We assume you want to finish. One less explanation, one less choice, and the rest of the time goes back to the work.",
     },
   ],
   [
     {
       type: "text",
-      text: "所以特点不安放在标题下面。它们就待在句子里，读到的时候，才自己厚起来。",
+      text: "So the features do not sit under a heading. They stay inside the sentence, and thicken only when you reach them.",
     },
   ],
   [
-    { type: "text", text: "一次研究做到最后，会落进" },
+    { type: "text", text: "A study carried all the way through settles into the " },
     { type: "feature", id: "spine" },
-    { type: "text", text: "第二天还能顺着折痕翻回去。讨论留在" },
+    { type: "text", text: " The next day you can still follow the crease back. Discussion stays in the " },
     { type: "feature", id: "talk" },
-    { type: "text", text: "不必为了追一句，再新开一个频道。要交出去的那一版，叫" },
+    { type: "text", text: " so one remark does not need a new channel. The version you hand over is the " },
     { type: "feature", id: "seal" },
-    { type: "text", text: "决定落在哪一句，版本就钉在哪一句。" },
+    { type: "text", text: " The decision lands on a sentence, and the version is pinned there too." },
   ],
   [
     {
       type: "text",
-      text: "三件事共用一条安静的时间线。没有仪表盘，没有红点，也没有人提醒你已经三天没有打开。",
+      text: "Three things share one quiet timeline. No dashboard, no red dots, and no one reminding you that you have not opened it in three days.",
     },
   ],
   [
-    { type: "text", text: "桌边坐着的是" },
+    { type: "text", text: "At the desk are " },
     { type: "feature", id: "people" },
     {
       type: "text",
-      text: "一年只做两件，做到别人可以接着用，再开始下一件。",
+      text: " Two things a year, finished so someone else can continue, then the next.",
     },
   ],
   [
-    { type: "text", text: "如果你也想把一件产品折得更薄，写信到 " },
+    { type: "text", text: "If you want a product folded thinner, write to " },
     {
       type: "link",
       href: "mailto:studio@zhezhi.studio",
       text: "studio@zhezhi.studio",
     },
-    { type: "text", text: "。" },
+    { type: "text", text: "." },
   ],
 ];
