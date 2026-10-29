@@ -1,5 +1,7 @@
 # Zhezhi
 
+A quick concept demo of an effect, built with Cursor Agent.
+
 A scrolling page for introducing yourself, a team, or a studio.
 
 The type starts as a dark gray, nearly lost in the background. As you scroll, it fills one line at a time, left to right. When the reading reaches a feature, that word thickens into a flat card inside the sentence, then the sentence goes on. The card lives in the prose, not in a row under a heading.
