@@ -1,6 +1,6 @@
-export const DIM = [62, 58, 52] as const;
-export const LIT = [243, 238, 230] as const;
-export const NIB = [255, 252, 246] as const;
+export const DIM = [58, 58, 58] as const;
+export const LIT = [242, 242, 242] as const;
+export const NIB = [255, 255, 255] as const;
 
 export const OPEN_AT = 0.34;
 export const CLOSE_AT = 0.08;

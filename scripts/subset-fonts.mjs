@@ -40,8 +40,6 @@ async function fetchWeight(family, weight) {
 
 mkdirSync("app/fonts", { recursive: true });
 const jobs = [
-  ["Newsreader", "500", "app/fonts/serif-500.woff2"],
-  ["Newsreader", "600", "app/fonts/serif-600.woff2"],
   ["Instrument+Sans", "400", "app/fonts/sans-400.woff2"],
   ["Instrument+Sans", "500", "app/fonts/sans-500.woff2"],
 ];

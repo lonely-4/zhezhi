@@ -2,16 +2,6 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const serif = localFont({
-  src: [
-    { path: "./fonts/serif-500.woff2", weight: "500", style: "normal" },
-    { path: "./fonts/serif-600.woff2", weight: "600", style: "normal" },
-  ],
-  variable: "--font-essay",
-  display: "swap",
-  adjustFontFallback: false,
-});
-
 const sans = localFont({
   src: [
     { path: "./fonts/sans-400.woff2", weight: "400", style: "normal" },
@@ -29,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#110f0c",
+  themeColor: "#000000",
   colorScheme: "dark",
 };
 
@@ -39,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="en" className={sans.variable}>
       <body>{children}</body>
     </html>
   );

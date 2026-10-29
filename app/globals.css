@@ -1,13 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #110f0c;
-  --bg-raise: #1c1b17;
-  --ink: #f3eee6;
-  --dim: #3e3a34;
-  --line: rgba(243, 238, 230, 0.14);
-  --muted: rgba(243, 238, 230, 0.62);
-  --serif: var(--font-essay), "Songti SC", "Noto Serif SC", serif;
+  --bg: #000;
+  --bg-raise: #1a1a1a;
+  --ink: #f2f2f2;
+  --dim: #3a3a3a;
+  --line: rgba(242, 242, 242, 0.14);
+  --muted: rgba(242, 242, 242, 0.62);
   --sans: var(--font-ui), "PingFang SC", "Noto Sans SC", sans-serif;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -28,10 +27,9 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background:
-    radial-gradient(ellipse at 50% 18%, #1a1814 0%, var(--bg) 52%, #0c0b09 100%);
+  background: #000;
   color: var(--ink);
-  font-family: var(--serif);
+  font-family: var(--sans);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -56,8 +54,8 @@ body {
   justify-content: space-between;
   gap: 1rem;
   padding: max(1.15rem, env(safe-area-inset-top)) 1.4rem 2.4rem;
-  background: linear-gradient(var(--bg) 20%, rgba(17, 15, 12, 0));
-  color: rgba(243, 238, 230, 0.72);
+  background: linear-gradient(#000 20%, transparent);
+  color: rgba(242, 242, 242, 0.72);
   font-family: var(--sans);
   font-size: 0.78rem;
   letter-spacing: 0.04em;
@@ -65,7 +63,7 @@ body {
 }
 
 .mark {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1rem;
   letter-spacing: 0.06em;
 }
@@ -101,11 +99,11 @@ body {
 .mail:hover,
 .mail:focus-visible {
   text-decoration: underline;
-  text-decoration-color: rgba(243, 238, 230, 0.7);
+  text-decoration-color: rgba(242, 242, 242, 0.7);
 }
 
 .mail:focus-visible {
-  outline: 1px solid rgba(243, 238, 230, 0.8);
+  outline: 1px solid rgba(242, 242, 242, 0.8);
   outline-offset: 4px;
   border-radius: 2px;
 }
@@ -130,7 +128,7 @@ body {
   padding: 0.08em 0.28em 0.1em 0.16em;
   border: 0;
   border-radius: 0.22em;
-  background: #2a2723;
+  background: #1a1a1a;
   box-shadow: none;
   vertical-align: baseline;
   line-height: 1;
@@ -151,10 +149,10 @@ body {
 }
 
 .feature[data-open="true"] .feature-title .glyph {
-  color: #f3eee6 !important;
+  color: #f2f2f2 !important;
   background: none !important;
   background-image: none !important;
-  -webkit-text-fill-color: #f3eee6 !important;
+  -webkit-text-fill-color: #f2f2f2 !important;
   text-shadow: none;
   line-height: 1;
 }
@@ -199,7 +197,7 @@ body {
   justify-content: center;
   width: 0.82em;
   height: 0.82em;
-  color: #f3eee6;
+  color: #f2f2f2;
 }
 
 .icon-slot svg {
@@ -222,7 +220,7 @@ body {
 
 .template-note {
   margin: 2.5rem 0 0;
-  color: rgba(243, 238, 230, 0.38);
+  color: rgba(242, 242, 242, 0.38);
   font-family: var(--sans);
   font-size: 0.82rem;
   letter-spacing: 0.04em;
@@ -235,7 +233,7 @@ body {
   right: 1.4rem;
   left: 1.4rem;
   margin: 0;
-  color: rgba(243, 238, 230, 0.42);
+  color: rgba(242, 242, 242, 0.42);
   font-family: var(--sans);
   font-size: 0.78rem;
   letter-spacing: 0.12em;
