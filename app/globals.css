@@ -159,6 +159,35 @@ body {
   line-height: 1;
 }
 
+.title-word {
+  display: inline;
+}
+
+.feature:not([data-open="true"]) .title-sizer {
+  display: none;
+}
+
+.feature[data-open="true"] .title-word {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+}
+
+.feature[data-open="true"] .title-sizer {
+  visibility: hidden;
+  line-height: 1;
+}
+
+.feature[data-open="true"] .title-ink {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82em;
+  line-height: 1;
+}
+
 .feature:not([data-open="true"]) .icon-slot {
   display: none;
 }
